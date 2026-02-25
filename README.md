@@ -1,66 +1,134 @@
-TARDIS Setups Plot Gallery
-An automated visualization pipeline developed for the **GSoC 2026 project idea**: "TARDIS Setups Generated Plots and Gallery". This tool streamlines the process of running supernova simulations and comparing results through an automatically generated web dashboard.
+🚀 **TARDIS Plot Generation and Gallery Prototype**
 
-🚀 Overview
-This project automates the workflow for researchers using TARDIS. Instead of manually running simulations and plotting results one by one, this tool scans a directory of models, executes the simulations, and compiles a comprehensive visual gallery.
+This project is a prototype implementation of the "TARDIS Setups Generated Plots and Gallery" GSoC idea.
 
-✨ Features
-Automated Batch Processing: Scans the models/ directory for .yml configuration files and runs them in sequence.
+It automates the generation of synthetic spectrum plots, SDEC plots, LIV plots, and creates an HTML gallery from multiple TARDIS YAML configuration files.
 
-Comprehensive Visualization: Automatically generates three types of plots for every model:
+📌 **Overview**
 
-Standard Spectrum: Visualizes luminosity density across wavelengths.
+The TARDIS setups repository contains many YAML configuration files for running simulations. However, it is not straightforward for users to preview the inputs and outputs for each model.
 
-SDec (Spectral element DEComposition): Identifies chemical element contributions to the spectrum.
+This project provides:
 
-LIV (Line Interaction Visualization): Shows photon-line interactions.
+A script to automatically run TARDIS simulations from YAML files
 
-Data Export: Saves raw simulation data into .csv files for deep-dive scientific analysis.
+Automatic generation of:
 
-Web Dashboard: Automatically generates a responsive gallery.html to view and compare all results in a single browser view.
+  Synthetic Spectrum plots
+  
+  SDEC (Spectral Element Decomposition) plots
+  
+  LIV (Line Interaction Visualization) plots
+  
+  CSV export of spectral data
+  
+  Automatic HTML gallery generation for easy browsing
+  
+  A Jupyter notebook demonstration of the full workflow
 
-Modular Architecture: Organized into core/ (logic), models/ (inputs), and outputs/ for professional software maintainability.
+✨ **  Features**
 
-🛠️ Project Structure
-Plaintext
-tardis-plot-gallery/
-├── core/
-│   ├── scanner.py   # Scans for model files
-│   ├── runner.py    # Main simulation execution logic
-│   └── plotter.py   # Custom plotting functions (Matplotlib/TARDIS)
-├── models/          # Input .yml configuration files
-├── outputs/         # Generated PNGs, CSVs, and HTML gallery
-└── main.py          # Entry point for the pipeline
-⚙️ Installation & Usage
-Prerequisites
-Python 3.13 (Recommended for TARDIS stability)
+  Run TARDIS simulations from YAML configuration files
+  
+  Generate synthetic spectrum plots (PNG + CSV)
+  
+  Generate SDEC plots
+  
+  Generate LIV plots
+  
+  Automatically process multiple models
+  
+  Automatically generate an HTML gallery of outputs
+  
+  Jupyter notebook demonstration of visualization workflow
 
-Conda / Miniconda
+ 
+  📂 **Project Structure**
 
-Setup
-Clone the repository:
+      core/
+        runner.py       - Main execution script
+        plotter.py      - Spectrum, SDEC, and LIV plot generation
+        gallery.py      - HTML gallery builder
+        scanner.py      - Scans YAML model files
+    
+    models/
+        YAML configuration files
+    
+    notebooks/
+        visualization_demo.ipynb - Demonstration notebook
+    
+    outputs/
+        Generated plots and gallery (ignored in git)
 
-Bash
-git clone https://github.com/mParmar09/tardis-plot-gallery.git
-cd tardis-plot-gallery
-Create and activate the environment:
+🛠 **Installation**
 
-Bash
-conda create -n tardis_env python=3.10
-conda activate tardis_env
-conda install -c tardis-sn tardis
-Running the Pipeline
-Place your .yml files in the models/ folder and run:
+Create and activate a Python environment, then install required dependencies:
+         
+    pip install tardis-sn matplotlib pandas
 
-Bash
-python -m core.runner
-Once finished, open outputs/gallery.html in your browser to view the results.
+**if using conda:**
 
-📈 Future Roadmap
-[ ] Integration with the official tardis-setups repository.
+    conda create -n tardis_env python=3.13
+    conda activate tardis_env
+    pip install tardis-sn matplotlib pandas
 
-[ ] Support for interactive Plotly widgets in the HTML gallery.
+▶️ **Usage**
 
-[ ] Metadata extraction (Temperature, Velocity) to display alongside plots.
+Run all models inside the models/ folder:
 
-[ ] GitHub Actions pipeline for automated gallery updates on new submissions.
+    python -m core.runner
+
+**Run models from a custom folder:**
+
+    python -m core.runner path_to_models_folder
+    
+📓 **After execution:**
+
+Spectrum PNG and CSV files are saved in outputs/
+
+SDEC plots are saved in outputs/
+
+LIV plots are saved in outputs/
+
+An HTML gallery is generated at:   
+
+    outputs/gallery.html
+
+Open gallery.html in your browser to view results
+
+
+🎯 **Notebook Demonstration**
+
+The notebook notebooks/visualization_demo.ipynb demonstrates:
+
+Running a TARDIS simulation
+
+Generating synthetic spectrum
+
+Generating SDEC plot
+
+Generating LIV plot
+
+Visualization workflow in JupyterLab
+
+
+📄 **Expected Outcome (GSoC Context)**
+
+This prototype demonstrates:
+
+Automated visualization of TARDIS YAML setups
+
+Multi-model batch processing
+
+Structured plot generation
+
+Basic HTML gallery creation
+
+This aligns with the objective of building a preview and visualization pipeline for TARDIS setup configurations.
+    
+
+📄 **License**
+
+MIT License
+    
+    

@@ -1,0 +1,41 @@
+tardis_config_version: v1.0
+
+atom_data: kurucz_cd23_chianti_H_He_latest
+
+supernova:
+  luminosity_requested: 1e43 erg / s
+  time_explosion: 13 day
+
+model:
+  structure:
+    type: specific
+    velocity:
+      start: 1.0e4 km/s
+      stop: 1.1e4 km/s
+      num: 5
+    density:
+      type: uniform
+      value: 1e-14 g/cm^3
+
+  abundances:
+    type: uniform
+    H: 0.7
+    He: 0.28
+    C: 0.01
+    O: 0.01
+
+plasma:
+  ionization: nebular
+  excitation: dilute-lte
+  radiative_rates_type: dilute-blackbody
+  line_interaction_type: macroatom
+
+montecarlo:
+  seed: 23111963
+  no_of_packets: 1000
+  iterations: 1
+
+spectrum:
+  start: 500 angstrom
+  stop: 20000 angstrom
+  num: 1000

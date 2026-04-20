@@ -26,7 +26,7 @@ Automatic generation of:
   
   A Jupyter notebook demonstration of the full workflow
 
-✨ **  Features**
+✨ **Features**
 
   Run TARDIS simulations from YAML configuration files
   

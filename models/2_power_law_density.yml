@@ -1,0 +1,63 @@
+# TARDIS Configuration - Power Law Density Profile
+# Based on official TARDIS documentation examples
+# Reference: https://tardis-sn.github.io/tardis/io/configuration/components/models/
+
+tardis_config_version: v1.0
+
+supernova:
+  luminosity_requested: 9.2 log_lsun
+  time_explosion: 15 day
+
+atom_data: kurucz_cd23_chianti_H_He_latest.h5
+
+model:
+  structure:
+    type: specific
+    velocity:
+      start: 1.0e4 km/s
+      stop: 22000 km/s
+      num: 25
+    density:
+      type: power_law
+      rho_0: 1.e-10 g/cm^3
+      v_0: 10000 km/s
+      exponent: 3
+
+  abundances:
+    type: uniform
+    O: 0.18
+    Mg: 0.05
+    Si: 0.48
+    S: 0.20
+    Ar: 0.06
+    Ca: 0.03
+
+plasma:
+  disable_electron_scattering: no
+  ionization: lte
+  excitation: lte
+  radiative_rates_type: dilute-blackbody
+  line_interaction_type: macroatom
+
+montecarlo:
+  seed: 12345678
+  no_of_packets: 5.0e+4
+  iterations: 25
+  nthreads: 2
+
+  last_no_of_packets: 1.5e+5
+  no_of_virtual_packets: 12
+
+  convergence_strategy:
+    type: damped
+    damping_constant: 1.0
+    threshold: 0.04
+    fraction: 0.85
+    hold_iterations: 4
+    t_inner:
+      damping_constant: 0.5
+
+spectrum:
+  start: 500 angstrom
+  stop: 20000 angstrom
+  num: 10000

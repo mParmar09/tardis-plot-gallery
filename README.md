@@ -126,9 +126,3 @@ Basic HTML gallery creation
 
 This aligns with the objective of building a preview and visualization pipeline for TARDIS setup configurations.
     
-
-📄 **License**
-
-MIT License
-    
-    

@@ -1,4 +1,4 @@
-🚀 **TARDIS Plot Generation and Gallery Prototype**
+## 🚀 **TARDIS Plot Generation and Gallery Prototype**
 
 This project is a prototype implementation of the "TARDIS Setups Generated Plots and Gallery" GSoC idea.
 
